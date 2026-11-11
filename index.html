@@ -3,275 +3,407 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>11/14 - 11/15 台南兩天一夜親子順遊行程表</title>
+  <title>11/14 - 11/15 台南兩天一夜親子歡樂順遊</title>
   <style>
     :root {
-      --primary: #2b6cb0;
-      --primary-light: #ebf8ff;
-      --accent: #38a169;
-      --night: #6b46c1;
-      --text-main: #2d3748;
-      --text-muted: #718096;
-      --bg-page: #f7fafc;
-      --card-bg: #ffffff;
-      --border: #e2e8f0;
+      /* 暖暖粉橘與淡藍色系 */
+      --peach-main: #FF8A65;
+      --peach-dark: #F4511E;
+      --peach-light: #FFF3E0;
+      --peach-soft: #FFCCBC;
+      
+      --sky-main: #4FC3F7;
+      --sky-dark: #0288D1;
+      --sky-light: #E1F5FE;
+      --sky-soft: #B3E5FC;
+
+      --mint-accent: #66BB6A;
+      --mint-light: #E8F5E9;
+      --purple-night: #9575CD;
+      --purple-light: #EDE7F6;
+
+      --bg-cream: #FFFDF9;
+      --card-bg: #FFFFFF;
+      --text-main: #4E342E;
+      --text-sub: #6D4C41;
+      --text-muted: #A1887F;
     }
+
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
+
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", sans-serif;
-      background-color: var(--bg-page);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+      background-color: var(--bg-cream);
+      /* 遊戲室波點背景紋理 */
+      background-image: 
+        radial-gradient(var(--peach-soft) 1.5px, transparent 1.5px),
+        radial-gradient(var(--sky-soft) 1.5px, var(--bg-cream) 1.5px);
+      background-size: 32px 32px;
+      background-position: 0 0, 16px 16px;
       color: var(--text-main);
-      line-height: 1.6;
-      padding: 20px 16px 60px;
+      line-height: 1.65;
+      padding: 20px 16px 64px;
     }
+
     .container {
       max-width: 720px;
       margin: 0 auto;
     }
+
+    /* 歡樂頂部看板 */
     header {
-      background: linear-gradient(135deg, #2b6cb0 0%, #319795 100%);
-      color: #fff;
-      padding: 24px 20px;
-      border-radius: 14px;
-      margin-bottom: 20px;
-      box-shadow: 0 4px 12px rgba(43, 108, 176, 0.15);
+      background: linear-gradient(135deg, #FF9A76 0%, #FFB74D 50%, #4FC3F7 100%);
+      color: #FFFFFF;
+      padding: 26px 22px;
+      border-radius: 24px;
+      margin-bottom: 22px;
+      box-shadow: 0 8px 0 rgba(244, 81, 30, 0.2), 0 12px 20px rgba(0, 0, 0, 0.08);
+      border: 3px solid #FFFFFF;
+      position: relative;
+      overflow: hidden;
     }
+
     header h1 {
-      font-size: 1.45rem;
+      font-size: 1.5rem;
+      font-weight: 800;
+      letter-spacing: 0.5px;
       margin-bottom: 6px;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
     }
+
     header p {
-      font-size: 0.92rem;
-      opacity: 0.92;
+      font-size: 0.94rem;
+      font-weight: 600;
+      background: rgba(255, 255, 255, 0.22);
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 20px;
     }
+
+    /* 積木感分頁按鈕 */
     .tabs {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 6px;
-      margin-bottom: 20px;
+      gap: 8px;
+      margin-bottom: 22px;
     }
+
     .tab-btn {
-      padding: 11px 6px;
-      font-size: 0.9rem;
-      font-weight: 700;
-      border: 2px solid var(--primary);
-      border-radius: 10px;
-      background: #fff;
-      color: var(--primary);
+      padding: 12px 6px;
+      font-size: 0.92rem;
+      font-weight: 800;
+      border: 2px solid var(--sky-main);
+      border-radius: 16px;
+      background: #FFFFFF;
+      color: var(--sky-dark);
       cursor: pointer;
-      transition: all 0.2s;
+      box-shadow: 0 4px 0 var(--sky-soft);
+      transition: all 0.15s ease;
       text-align: center;
     }
-    .tab-btn.active {
-      background: var(--primary);
-      color: #fff;
-      box-shadow: 0 4px 10px rgba(43, 108, 176, 0.2);
+
+    .tab-btn:hover {
+      transform: translateY(-2px);
     }
+
+    .tab-btn.active {
+      background: var(--peach-main);
+      border-color: var(--peach-dark);
+      color: #FFFFFF;
+      box-shadow: 0 4px 0 var(--peach-dark);
+      transform: translateY(1px);
+    }
+
     .day-content {
       display: none;
+      animation: popIn 0.25s ease;
     }
+
     .day-content.active {
       display: block;
     }
+
+    @keyframes popIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
     .timeline {
       display: flex;
       flex-direction: column;
-      gap: 16px;
-      margin-bottom: 32px;
+      gap: 18px;
+      margin-bottom: 34px;
     }
+
+    /* 遊戲室故事卡片 */
     .card {
       background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 18px 20px;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+      border: 2px solid var(--sky-soft);
+      border-radius: 22px;
+      padding: 20px 22px;
+      box-shadow: 0 6px 0 var(--sky-light), 0 8px 16px rgba(79, 195, 247, 0.08);
+      transition: transform 0.2s;
     }
+
+    .card.peach-card {
+      border-color: var(--peach-soft);
+      box-shadow: 0 6px 0 var(--peach-light), 0 8px 16px rgba(255, 138, 101, 0.08);
+    }
+
     .badge {
       display: inline-block;
-      background: var(--primary-light);
-      color: var(--primary);
-      font-weight: 700;
+      background: var(--sky-light);
+      color: var(--sky-dark);
+      font-weight: 800;
       font-size: 0.85rem;
-      padding: 4px 10px;
+      padding: 5px 12px;
       border-radius: 20px;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
+      border: 1.5px solid var(--sky-soft);
     }
+
     .badge.food {
-      background: #f0fff4;
-      color: var(--accent);
+      background: var(--mint-light);
+      color: #2E7D32;
+      border-color: #C8E6C9;
     }
+
     .badge.hotel {
-      background: #fffaf0;
-      color: #dd6b20;
+      background: var(--peach-light);
+      color: var(--peach-dark);
+      border-color: var(--peach-soft);
     }
+
     .badge.night {
-      background: #faf5ff;
-      color: var(--night);
+      background: var(--purple-light);
+      color: #5E35B1;
+      border-color: #D1C4E9;
     }
+
     .card h2 {
-      font-size: 1.18rem;
+      font-size: 1.2rem;
+      font-weight: 800;
       margin-bottom: 8px;
-      color: #1a202c;
+      color: var(--text-main);
     }
+
     .card p {
       font-size: 0.95rem;
-      color: #4a5568;
-      margin-bottom: 12px;
+      color: var(--text-sub);
+      margin-bottom: 14px;
     }
+
     .card p:last-child {
       margin-bottom: 0;
     }
+
     .meta-box {
-      background: #f8fafc;
-      border-radius: 8px;
-      padding: 10px 12px;
+      background: #F4FBFE;
+      border-radius: 14px;
+      padding: 12px 14px;
       font-size: 0.88rem;
       color: var(--text-main);
-      border-left: 3px solid var(--primary);
+      border: 1.5px dashed var(--sky-main);
     }
+
+    .meta-box.peach-box {
+      background: #FFF9F5;
+      border-color: var(--peach-main);
+    }
+
     .meta-box.food-box {
-      border-left-color: var(--accent);
+      background: #F6FBF6;
+      border-color: var(--mint-accent);
     }
+
     .meta-row {
       margin-bottom: 4px;
     }
+
     .meta-row:last-child {
       margin-bottom: 0;
     }
+
     .actions {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 12px;
+      gap: 10px;
+      margin-top: 14px;
     }
+
+    /* 立體玩具感按鈕 */
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 7px 14px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      border-radius: 6px;
+      padding: 8px 16px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      border-radius: 12px;
       text-decoration: none;
       cursor: pointer;
       border: none;
-      transition: opacity 0.2s;
+      transition: all 0.15s;
     }
-    .btn:hover {
-      opacity: 0.88;
+
+    .btn:active {
+      transform: translateY(2px);
     }
+
     .btn-map {
-      background-color: var(--primary);
-      color: #fff;
+      background-color: var(--sky-main);
+      color: #FFFFFF;
+      box-shadow: 0 3px 0 var(--sky-dark);
     }
+
+    .btn-peach {
+      background-color: var(--peach-main);
+      color: #FFFFFF;
+      box-shadow: 0 3px 0 var(--peach-dark);
+    }
+
     .btn-food {
-      background-color: var(--accent);
-      color: #fff;
+      background-color: var(--mint-accent);
+      color: #FFFFFF;
+      box-shadow: 0 3px 0 #388E3C;
     }
+
     .btn-copy {
-      background-color: #edf2f7;
-      color: #2d3748;
+      background-color: var(--peach-light);
+      color: var(--peach-dark);
+      box-shadow: 0 3px 0 var(--peach-soft);
     }
+
     .section-title {
-      font-size: 1.2rem;
-      font-weight: 700;
+      font-size: 1.22rem;
+      font-weight: 800;
       margin-bottom: 14px;
-      padding-left: 10px;
-      border-left: 4px solid var(--primary);
+      padding: 6px 14px;
+      background: var(--peach-light);
+      color: var(--peach-dark);
+      border-radius: 14px;
+      display: inline-block;
+      border: 2px solid var(--peach-soft);
     }
+
     .table-wrap {
       overflow-x: auto;
       background: var(--card-bg);
-      border-radius: 12px;
-      border: 1px solid var(--border);
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+      border-radius: 20px;
+      border: 2px solid var(--peach-soft);
+      box-shadow: 0 6px 0 var(--peach-light);
       margin-bottom: 24px;
     }
+
     table {
       width: 100%;
       border-collapse: collapse;
       font-size: 0.9rem;
       text-align: left;
     }
+
     th, td {
       padding: 12px 14px;
-      border-bottom: 1px solid var(--border);
+      border-bottom: 1.5px dashed var(--peach-soft);
     }
+
     th {
-      background-color: #edf2f7;
-      font-weight: 700;
-      color: #2d3748;
+      background-color: var(--peach-light);
+      font-weight: 800;
+      color: var(--peach-dark);
       white-space: nowrap;
     }
+
     tr:last-child td {
       border-bottom: none;
     }
+
+    /* 歡樂打包清單 */
     .checklist-group {
-      margin-bottom: 18px;
+      margin-bottom: 20px;
     }
+
     .checklist-group:last-child {
       margin-bottom: 0;
     }
+
     .checklist-group h3 {
       font-size: 1.05rem;
-      color: var(--primary);
+      font-weight: 800;
+      color: var(--peach-dark);
       margin-bottom: 10px;
-      padding-bottom: 4px;
-      border-bottom: 1px dashed var(--border);
+      padding-bottom: 6px;
+      border-bottom: 2px dashed var(--peach-soft);
     }
+
     .check-item {
       display: flex;
       align-items: center;
-      gap: 10px;
-      padding: 10px 12px;
-      background: #f8fafc;
-      border-radius: 8px;
+      gap: 12px;
+      padding: 12px 14px;
+      background: #F4FBFE;
+      border: 1.5px solid var(--sky-soft);
+      border-radius: 14px;
       margin-bottom: 8px;
       cursor: pointer;
       user-select: none;
-      transition: background 0.2s;
+      transition: all 0.2s;
     }
+
     .check-item:hover {
-      background: #edf2f7;
+      background: var(--sky-light);
     }
+
     .check-item input[type="checkbox"] {
-      width: 18px;
-      height: 18px;
-      accent-color: var(--accent);
+      width: 20px;
+      height: 20px;
+      accent-color: var(--peach-main);
       cursor: pointer;
     }
+
+    .check-item.checked {
+      background: #F5F5F5;
+      border-color: #E0E0E0;
+    }
+
     .check-item.checked span {
       text-decoration: line-through;
       color: var(--text-muted);
     }
+
     .highlight-tag {
-      background: #fed7d7;
-      color: #c53030;
-      font-size: 0.78rem;
-      font-weight: 700;
-      padding: 2px 6px;
-      border-radius: 4px;
+      background: var(--peach-main);
+      color: #FFFFFF;
+      font-size: 0.76rem;
+      font-weight: 800;
+      padding: 2px 8px;
+      border-radius: 10px;
       margin-left: 6px;
+      display: inline-block;
     }
+
     .toast {
       position: fixed;
       bottom: 24px;
       left: 50%;
       transform: translateX(-50%);
-      background: #2d3748;
-      color: #fff;
-      padding: 10px 20px;
-      border-radius: 8px;
-      font-size: 0.9rem;
+      background: var(--peach-dark);
+      color: #FFFFFF;
+      font-weight: 700;
+      padding: 12px 22px;
+      border-radius: 20px;
+      font-size: 0.92rem;
+      box-shadow: 0 6px 16px rgba(244, 81, 30, 0.3);
       opacity: 0;
       pointer-events: none;
       transition: opacity 0.3s;
       z-index: 999;
     }
+
     .toast.show {
       opacity: 1;
     }
@@ -281,81 +413,24 @@
 
 <div class="container">
   <header>
-    <h1>台南兩天一夜親子順遊行程表</h1>
-    <p>Day 1 海岸線×新市×永大夜市 ➔ Day 2 玩到12點退房×天一中藥＆白人牙膏餵魚</p>
+    <h1>🧸 台南兩天一夜親子歡樂順遊</h1>
+    <p>🚗 11/14 海岸線×新市×永大夜市 ➔ 11/15 玩到12點退房×餵魚去！</p>
 
     <!-- 
     ====================================================================
     【備用區塊：日本時間時鐘】
     目前已經幫你註解隱藏起來，若未來需要顯示，只要把外層的註解符號拿掉即可。
     ====================================================================
-    <div id="jp-clock-box" style="margin-top: 12px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.25); font-size: 0.9rem;">
+    <div id="jp-clock-box" style="margin-top: 12px; padding-top: 10px; border-top: 1.5px dashed rgba(255,255,255,0.5); font-size: 0.9rem; font-weight: 700;">
       🇯🇵 日本標準時間 (JST)：<span id="jp-time">--:--:--</span>
     </div>
     -->
   </header>
 
   <div class="tabs">
-    <button class="tab-btn active" onclick="switchTab('day1', this)">Day 1</button>
-    <button class="tab-btn" onclick="switchTab('day2', this)">Day 2</button>
-    <button class="tab-btn" onclick="switchTab('lunch', this)">蔬食午餐</button>
-    <button class="tab-btn" onclick="switchTab('packing', this)">打包清單</button>
+    <button class="tab-btn active" onclick="switchTab('day1', this)">🎈 Day 1</button>
+    <button class="tab-btn" onclick="switchTab('day2', this)">🎠 Day 2</button>
+    <button class="tab-btn" onclick="switchTab('lunch', this)">🥗 蔬食午餐</button>
+    <button class="tab-btn" onclick="switchTab('packing', this)">🎒 打包清單</button>
   </div>
 
-  <!-- ==================== DAY 1 ==================== -->
-  <div id="day1" class="day-content active">
-    <div class="timeline">
-      <div class="card">
-        <span class="badge">08:15 - 08:40｜第一站</span>
-        <h2>山山山屋（七股區）</h2>
-        <p>戶外純白磁磚地景藝術建築，無門禁限制。早晨光線柔和，適合散步與拍攝濕地倒影（停留約 25 分鐘）。</p>
-        <div class="meta-box">
-          <div class="meta-row"><strong>導航地點：</strong>臺南市七股區頂山里（山山山屋）</div>
-          <div class="meta-row"><strong>開放時間：</strong>24 小時開放戶外空間（免費參觀）</div>
-        </div>
-        <div class="actions">
-          <a class="btn btn-map" href="https://google.com" target="_blank">開啟導航</a>
-          <button class="btn btn-copy" onclick="copyText('台南市七股區山山山屋')">複製地標</button>
-        </div>
-      </div>
-
-      <div class="card">
-        <span class="badge">08:45 - 09:30｜第二站</span>
-        <h2>七股鹽山（七股區）</h2>
-        <p>距離山山山屋車程約 3 分鐘。免去手作 DIY 與冷飲冰品，直接登頂爬鹽山、與大型裝置藝術合照，或逛逛園區鹽品伴手禮（沿海風大記得穿防風外套）。</p>
-        <div class="meta-box">
-          <div class="meta-row"><strong>導航地址：</strong>臺南市七股區鹽埕里66號</div>
-          <div class="meta-row"><strong>營業時間：</strong>08:30 - 17:30（小客車清潔費 100 元，可折抵部分消費）</div>
-          <div class="meta-row"><strong>聯絡電話：</strong>06-7800511</div>
-        </div>
-        <div class="actions">
-          <a class="btn btn-map" href="https://google.com" target="_blank">開啟導航</a>
-          <button class="btn btn-copy" onclick="copyText('臺南市七股區鹽埕里66號')">複製地址</button>
-        </div>
-      </div>
-
-      <div class="card">
-        <span class="badge">09:55 - 10:25｜第三站</span>
-        <h2>台江國家公園管理處遊客中心（安南區）</h2>
-        <p>沿台61線或台17線往南約 25 分鐘車程。參觀純白水上高腳屋與蚵殼牆建築拍照，快速瀏覽室內濕地生態展。</p>
-        <div class="meta-box">
-          <div class="meta-row"><strong>導航地址：</strong>臺南市安南區四草大道118號</div>
-          <div class="meta-row"><strong>開館時間：</strong>09:00 - 17:00（免費參觀、附設免費停車場）</div>
-          <div class="meta-row"><strong>聯絡電話：</strong>06-2842600</div>
-        </div>
-        <div class="actions">
-          <a class="btn btn-map" href="https://google.com" target="_blank">開啟導航</a>
-          <button class="btn btn-copy" onclick="copyText('臺南市安南區四草大道118號')">複製地址</button>
-        </div>
-      </div>
-
-      <div class="card">
-        <span class="badge">10:30 - 11:30｜第四站</span>
-        <h2>安順吉鹽故事館（安南區）</h2>
-        <p>距離台江遊客中心僅 5 分鐘車程。<strong>準時參加 10:30 免費定時導覽</strong>，聽解說員介紹百年鹽村歷史，11:30 準時上國道 8 號往新市。</p>
-        <div class="meta-box">
-          <div class="meta-row"><strong>導航地址：</strong>臺南市安南區塩田里大眾路101巷263號</div>
-          <div class="meta-row"><strong>開館時間：</strong>09:00 - 16:30（免費參觀，定時導覽 10:30 場次）</div>
-          <div class="meta-row"><strong>聯絡電話：</strong>06-2840053</div>
-        </div>
-        <div class="actions">
