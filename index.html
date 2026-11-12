@@ -1,128 +1,281 @@
 <!DOCTYPE html>
-<html lang="zh-Hant-TW">
+<html lang="zh-TW">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>11/14 - 11/15 台南兩天一夜親子歡樂順遊</title>
-<style>
-:root{--p:#FF8A65;--pd:#F4511E;--pl:#FFF3E0;--ps:#FFCCBC;--s:#4FC3F7;--sd:#0288D1;--sl:#E1F5FE;--ss:#B3E5FC;--m:#66BB6A;--ml:#E8F5E9;--bg:#FFFDF9;--t:#4E342E;--ts:#6D4C41}
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC",sans-serif;background:var(--bg);background-image:radial-gradient(var(--ps) 1.5px,transparent 1.5px),radial-gradient(var(--ss) 1.5px,var(--bg) 1.5px);background-size:32px 32px;background-position:0 0,16px 16px;color:var(--t);line-height:1.6;padding:18px 14px 50px}
-.box{max-width:680px;margin:0 auto}
-header{background:linear-gradient(135deg,#FF9A76 0%,#FFB74D 50%,#4FC3F7 100%);color:#fff;padding:22px 18px;border-radius:22px;margin-bottom:18px;box-shadow:0 6px 0 rgba(244,81,30,.2);border:3px solid #fff}
-header h1{font-size:1.4rem;font-weight:800;margin-bottom:6px;text-shadow:0 2px 4px rgba(0,0,0,.15)}
-header p{font-size:.9rem;font-weight:600;background:rgba(255,255,255,.22);display:inline-block;padding:3px 10px;border-radius:16px}
-.tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:18px}
-.tab{padding:10px 4px;font-size:.9rem;font-weight:800;border:2px solid var(--s);border-radius:14px;background:#fff;color:var(--sd);cursor:pointer;box-shadow:0 3px 0 var(--ss)}
-.tab.on{background:var(--p);border-color:var(--pd);color:#fff;box-shadow:0 3px 0 var(--pd)}
-.sec{display:none}.sec.on{display:block}
-.card{background:#fff;border:2px solid var(--ss);border-radius:20px;padding:16px 18px;margin-bottom:14px;box-shadow:0 5px 0 var(--sl)}
-.card.pk{border-color:var(--ps);box-shadow:0 5px 0 var(--pl)}
-.tag{display:inline-block;background:var(--sl);color:var(--sd);font-weight:800;font-size:.82rem;padding:4px 10px;border-radius:16px;margin-bottom:8px;border:1.5px solid var(--ss)}
-.tag.fd{background:var(--ml);color:#2E7D32;border-color:#C8E6C9}
-.tag.ht{background:var(--pl);color:var(--pd);border-color:var(--ps)}
-.card h2{font-size:1.12rem;font-weight:800;margin-bottom:6px}
-.card p{font-size:.92rem;color:var(--ts);margin-bottom:10px}
-.meta{background:#F4FBFE;border-radius:12px;padding:10px 12px;font-size:.85rem;border:1.5px dashed var(--s);margin-bottom:10px}
-.pk .meta{background:#FFF9F5;border-color:var(--p)}
-.acts{display:flex;gap:8px;flex-wrap:wrap}
-.btn{padding:7px 14px;font-size:.85rem;font-weight:700;border-radius:10px;text-decoration:none;cursor:pointer;border:none;color:#fff;background:var(--s);box-shadow:0 3px 0 var(--sd)}
-.btn.pk{background:var(--p);box-shadow:0 3px 0 var(--pd)}
-.btn.fd{background:var(--m);box-shadow:0 3px 0 #388E3C}
-.btn.cp{background:var(--pl);color:var(--pd);box-shadow:0 3px 0 var(--ps)}
-.memo{list-style:none}.memo li{padding:10px 12px;background:#F4FBFE;border:1.5px solid var(--ss);border-radius:12px;margin-bottom:8px;font-size:.92rem;font-weight:600}
-.memo li.imp{background:var(--pl);border-color:var(--ps);color:var(--pd)}
-.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--pd);color:#fff;font-weight:700;padding:10px 20px;border-radius:18px;font-size:.9rem;opacity:0;pointer-events:none;transition:.3s}
-.toast.show{opacity:1}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026 台南親子二日遊行程</title>
+    <!-- 引入 Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap');
+        body { font-family: 'Noto Sans TC', sans-serif; }
+    </style>
 </head>
-<body>
-<div class="box">
-<header>
-  <h1>🧸 台南兩天一夜親子歡樂順遊</h1>
-  <p>🚗 11/14 海岸線×新市×永大夜市 ➔ 11/15 玩到12點退房×餵魚去！</p>
-  <!-- 【備用日本時鐘】<div style="margin-top:8px;font-size:.88rem;font-weight:700">🇯🇵 日本時間：<span id="jp">--:--:--</span></div> -->
-</header>
-<div class="tabs">
-  <button type="button" class="tab on" onclick="go('d1',this)">🎈 Day 1</button>
-  <button type="button" class="tab" onclick="go('d2',this)">🎠 Day 2</button>
-  <button type="button" class="tab" onclick="go('fd',this)">🥗 蔬食午餐</button>
-  <button type="button" class="tab" onclick="go('pk',this)">🎒 打包清單</button>
-</div>
-<div id="d1" class="sec on">
-  <div class="card"><span class="tag">08:15 - 08:40｜第一站</span><h2>🏠 山山山屋（七股區）</h2><p>戶外純白磁磚地景藝術，早晨光線柔和適合散步拍照。</p><div class="meta">📍 臺南市七股區頂山里（山山山屋）｜⏰ 24H免費參觀</div><div class="acts"><a class="btn" href="https://google.com" target="_blank">🗺️ 導航</a><button type="button" class="btn cp" onclick="cp('台南市七股區山山山屋')">📋 複製</button></div></div>
-  <div class="card"><span class="tag">08:45 - 09:30｜第二站</span><h2>⛰️ 七股鹽山（七股區）</h2><p>免手作 DIY 與冰品，直接登頂爬鹽山、拍裝置藝術與逛伴手禮（風大穿防風外套）。</p><div class="meta">📍 臺南市七股區鹽埕里66號｜⏰ 08:30-17:30（小客車清潔費100元）</div><div class="acts"><a class="btn" href="https://google.com" target="_blank">🗺️ 導航</a><button type="button" class="btn cp" onclick="cp('臺南市七股區鹽埕里66號')">📋 複製</button></div></div>
-  <div class="card"><span class="tag">09:55 - 10:25｜第三站</span><h2>🦩 台江國家公園遊客中心（安南區）</h2><p>參觀純白水上高腳屋與蚵殼牆建築拍照，快速瀏覽室內濕地展。</p><div class="meta">📍 臺南市安南區四草大道118號｜⏰ 09:00-17:00（免費參觀停車）</div><div class="acts"><a class="btn" href="https://google.com" target="_blank">🗺️ 導航</a><button type="button" class="btn cp" onclick="cp('臺南市安南區四草大道118號')">📋 複製</button></div></div>
-  <div class="card"><span class="tag">10:30 - 11:30｜第四站</span><h2>🧂 安順吉鹽故事館（安南區）</h2><p><strong>準時參加 10:30 免費定時導覽</strong>，聽百年鹽村歷史，11:30 上國道8號往新市。</p><div class="meta">📍 臺南市安南區大眾路101巷263號｜⏰ 09:00-16:30（免費）</div><div class="acts"><a class="btn" href="https://google.com" target="_blank">🗺️ 導航</a><button type="button" class="btn cp" onclick="cp('臺南市安南區大眾路101巷263號')">📋 複製</button></div></div>
-  <div class="card"><span class="tag">11:50 - 12:15｜第五站</span><h2>🏮 新市建安宮（新市區）</h2><p>參拜五年千歲十二王爺，11/16 即將豎燈篙建醮，提早參拜清幽好停車。</p><div class="meta">📍 臺南市新市區光華街12號｜📞 06-5991808</div><div class="acts"><a class="btn" href="https://google.com" target="_blank">🗺️ 導航</a><button type="button" class="btn cp" onclick="cp('臺南市新市區光華街12號')">📋 複製</button></div></div>
-  <div class="card"><span class="tag fd">12:15 - 13:35｜第六站</span><h2>🍽️ 午餐時間</h2><p>新市區用餐休息（詳細餐廳請點上方「🥗 蔬食午餐」分頁）。</p></div>
-  <div class="card pk"><span class="tag ht">13:35 - 14:00｜下午入住</span><h2>🐨 晶盈親旅大酒店（永康區）</h2><p>14:00 報到後先玩 2 樓「無尾熊奇遊樂園」遊戲室（記得穿襪子）與 1 樓迎賓點心吧。</p><div class="meta">📍 臺南市永康區新中街206號｜📞 06-2541666</div><div class="acts"><a class="btn pk" href="https://google.com" target="_blank">🗺️ 導航</a><button type="button" class="btn cp" onclick="cp('臺南市永康區新中街206號')">📋 複製</button></div></div>
-  <div class="card pk"><span class="tag ht">18:30 - 20:30｜晚上加碼</span><h2>🎪 永大夜市（永康區）</h2><p>週六營業！美食與遊戲區分開規劃，動線寬敞，記得帶現金並停周邊計次停車場。</p><div class="meta">📍 臺南市永康區永大路二段與永大二路口｜⏰ 17:00-00:00</div><div class="acts"><a class="btn pk" href="https://google.com" target="_blank">🗺️ 導航</a><button type="button" class="btn cp" onclick="cp('台南市永康區永大夜市')">📋 複製</button></div></div>
-</div>
-<div id="d2" class="sec">
-  <div class="card pk"><span class="tag ht">11:00 - 12:00｜退房玩到12點</span><h2>☕ 晶盈親旅 遊戲室＆大廳點心吧</h2><p>11:00 退房寄放行李後，<strong>小孩繼續玩遊戲室到 12:00</strong>，大人在一樓大廳免費喝咖啡點心吧（停車可停至 12:00）。</p><div class="meta">📍 臺南市永康區新中街206號｜✨ 遊戲室＆停車皆至 12:00</div></div>
-  <div class="card"><span class="tag fd">12:15 - 13:20｜第二站</span><h2>🍽️ 午餐時間</h2><p>國道 1 號北上沿線用餐（詳細餐廳請點上方「🥗 蔬食午餐」分頁）。</p></div>
-  <div class="card"><span class="tag">13:40 - 14:40｜回程第一站</span><h2>🏯 天一中藥生活化園區（官田區）</h2><p>近麻豆交流道，<strong>免門票免費停車</strong>！拍巨大藥罐、逛百子櫃藥牆、免費換穿古裝拍照。</p><div class="meta">📍 臺南市官田區工業路31號｜⏰ 08:00-17:00（免費）</div><div class="acts"><a class="btn" href="https://google.com" target="_blank">🗺️ 導航</a><button type="button" class="btn cp" onclick="cp('臺南市官田區工業路31號')">📋 複製</button></div></div>
-  <div class="card"><span class="tag">15:10 - 16:00｜回程第二站</span><h2>🐟 白人牙膏觀光工廠（嘉義水上）</h2><p>水上交流道下 3 分鐘，<strong>免門票免費停車</strong>！帶孩子庭園水池餵魚、逛將軍府、免費喝熱薑茶咖啡後返台中。</p><div class="meta">📍 嘉義縣水上鄉龍德村十一指厝144號｜⏰ 09:00-17:00（免費）</div><div class="acts"><a class="btn" href="https://google.com" target="_blank">🗺️ 導航</a><button type="button" class="btn cp" onclick="cp('嘉義縣水上鄉龍德村十一指厝144號')">📋 複製</button></div></div>
-</div>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col" x-data="{ activeTab: 'trip' }">
 
-<div id="fd" class="sec">
-  <div class="card"><span class="tag fd">Day 1 選項 A｜建安宮步行2分</span><h2>🍵 山分甜茶館（推薦首選）</h2><p>同在光華街上，提供蛋素與全素中西式餐點，下午不午休、適合親子內用休息。</p><div class="meta">📍 臺南市新市區光華街115號｜📞 06-5898033</div><div class="acts"><a class="btn fd" href="https://google.com" target="_blank">🗺️ 導航</a><button type="button" class="btn cp" onclick="cp('臺南市新市區光華街115號')">📋 複製</button></div></div>
-  <div class="card"><span class="tag fd">Day 1 選項 B｜建安宮步行7分</span><h2>🍜 小華素食</h2><p>台式傳統素食小吃（炒飯、羹麵、當歸湯、素粽），出餐快，營業至 14:00。</p><div class="meta">📍 臺南市新市區忠孝街225號｜📞 06-5995817</div><div class="acts"><a class="btn fd" href="https://google.com" target="_blank">🗺️ 導航</a><button type="button" class="btn cp" onclick="cp('臺南市新市區忠孝街225號')">📋 複製</button></div></div>
-  <div class="card pk"><span class="tag fd">Day 2 選項 A｜永康飯店車程8分</span><h2>🥗 全養知異國蔬食（奇美店）</h2><p>退房後先在永康吃飽再上國道 1 號，提供多樣化中式與西式創意蔬食。</p><div class="meta">📍 臺南市永康區大武街34號2樓｜📞 06-2510395</div><div class="acts"><a class="btn fd" href="https://google.com" target="_blank">🗺️ 導航</a><button type="button" class="btn cp" onclick="cp('臺南市永康區大武街34號')">📋 複製</button></div></div>
-  <div class="card pk"><span class="tag fd">Day 2 選項 B｜麻豆交流道旁</span><h2>🍲 十方齋素食（麻豆店）</h2><p>下麻豆交流道順路用餐，距離天一中藥園區車程僅約 8 分鐘。</p><div class="meta">📍 臺南市麻豆區興中路117號｜📞 06-5729822</div><div class="acts"><a class="btn fd" href="https://google.com" target="_blank">🗺️ 導航</a><button type="button" class="btn cp" onclick="cp('臺南市麻豆區興中路117號')">📋 複製</button></div></div>
-</div>
+    <!-- 頂部導覽列 -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-3xl mx-auto px-4 py-4 flex flex-col sm:flex-row justify-between items-center gap-3">
+            <div>
+                <h1 class="text-xl font-bold text-slate-900 flex items-center gap-2">
+                    🚗 2026 台南親子二日遊
+                </h1>
+                <p class="text-xs text-slate-500">11/14 (五) - 11/15 (日) ｜ 入住：晶盈親旅大酒店</p>
+            </div>
+            <!-- 分頁切換按鈕 -->
+            <div class="flex bg-slate-100 p-1 rounded-xl text-xs sm:text-sm font-medium overflow-x-auto max-w-full">
+                <button @click="activeTab = 'trip'" 
+                        :class="activeTab === 'trip' ? 'bg-white text-indigo-600 shadow-sm' : 'text-slate-600 hover:text-slate-900'"
+                        class="px-3 py-2 rounded-lg transition-all whitespace-nowrap">
+                    🗺️ 行程規劃
+                </button>
+                <button @click="activeTab = 'spots'" 
+                        :class="activeTab === 'spots' ? 'bg-white text-indigo-600 shadow-sm' : 'text-slate-600 hover:text-slate-900'"
+                        class="px-3 py-2 rounded-lg transition-all whitespace-nowrap">
+                    🎡 景點與備案
+                </button>
+                <button @click="activeTab = 'food'" 
+                        :class="activeTab === 'food' ? 'bg-white text-indigo-600 shadow-sm' : 'text-slate-600 hover:text-slate-900'"
+                        class="px-3 py-2 rounded-lg transition-all whitespace-nowrap">
+                    🥗 素食餐館推薦
+                </button>
+            </div>
+        </div>
+    </header>
 
-<div id="pk" class="sec">
-  <div class="card pk">
-    <span class="tag ht">🎒 必帶物品備忘錄</span>
-    <ul class="memo">
-      <li class="imp">🧥 防風外套（大人、小孩各一件，海邊防風保暖）</li>
-      <li class="imp">🫧 洗澡球（沐浴球，晚上洗澡必備）</li>
-      <li class="imp">🧦 襪子（大人、小孩皆需穿襪才能進飯店遊戲室）</li>
-      <li>👕 兩天一夜換洗衣物、睡衣、好走的休閒運動鞋</li>
-      <li>🕶️ 太陽眼鏡、遮陽帽、防曬乳、個人藥品與乾濕紙巾</li>
-      <li>💳 身分證、健保卡、現金百元鈔（永大夜市＆餵魚飼料）</li>
-      <li>🔋 手機充電器、行動電源、車用充電線、隨身保溫水壺</li>
-    </ul>
-  </div>
-</div>
-</div>
+    <!-- 主要內容區 -->
+    <main class="max-w-3xl w-full mx-auto px-4 py-6 flex-grow">
 
-<div id="toast" class="toast">已複製！</div>
-<script>
-function go(id,b){document.querySelectorAll('.sec').forEach(e=>e.classList.remove('on'));document.querySelectorAll('.tab').forEach(e=>e.classList.remove('on'));document.getElementById(id).classList.add('on');b.classList.add('on')}
-function cp(t){navigator.clipboard.writeText(t).then(()=>{const s=document.getElementById('toast');s.textContent='✨ 已複製：'+t;s.classList.add('show');setTimeout(()=>s.classList.remove('show'),1800)})}
-/* 備用日本時鐘：setInterval(()=>{const e=document.getElementById('jp');if(e)e.textContent=new Date().toLocaleTimeString('zh-TW',{timeZone:'Asia/Tokyo',hour12:false})},1000); */
-</script>
-</body>
-</html>
-<div id="fd" class="sec">
-  <div class="card"><span class="tag fd">Day 1 選項 A｜建安宮步行2分</span><h2>🍵 山分甜茶館（推薦首選）</h2><p>同在光華街上，提供蛋素與全素中西式餐點，下午不午休、適合親子內用休息。</p><div class="meta">📍 臺南市新市區光華街115號｜📞 06-5898033</div><div class="acts"><a class="btn fd" href="https://google.com" target="_blank">🗺️ 導航</a><button type="button" class="btn cp" onclick="cp('臺南市新市區光華街115號')">📋 複製</button></div></div>
-  <div class="card"><span class="tag fd">Day 1 選項 B｜建安宮步行7分</span><h2>🍜 小華素食</h2><p>台式傳統素食小吃（炒飯、羹麵、當歸湯、素粽），出餐快，營業至 14:00。</p><div class="meta">📍 臺南市新市區忠孝街225號｜📞 06-5995817</div><div class="acts"><a class="btn fd" href="https://google.com" target="_blank">🗺️ 導航</a><button type="button" class="btn cp" onclick="cp('臺南市新市區忠孝街225號')">📋 複製</button></div></div>
-  <div class="card pk"><span class="tag fd">Day 2 選項 A｜永康飯店車程8分</span><h2>🥗 全養知異國蔬食（奇美店）</h2><p>退房後先在永康吃飽再上國道 1 號，提供多樣化中式與西式創意蔬食。</p><div class="meta">📍 臺南市永康區大武街34號2樓｜📞 06-2510395</div><div class="acts"><a class="btn fd" href="https://google.com" target="_blank">🗺️ 導航</a><button type="button" class="btn cp" onclick="cp('臺南市永康區大武街34號')">📋 複製</button></div></div>
-  <div class="card pk"><span class="tag fd">Day 2 選項 B｜麻豆交流道旁</span><h2>🍲 十方齋素食（麻豆店）</h2><p>下麻豆交流道順路用餐，距離天一中藥園區車程僅約 8 分鐘。</p><div class="meta">📍 臺南市麻豆區興中路117號｜📞 06-5729822</div><div class="acts"><a class="btn fd" href="https://google.com" target="_blank">🗺️ 導航</a><button type="button" class="btn cp" onclick="cp('臺南市麻豆區興中路117號')">📋 複製</button></div></div>
-</div>
-<div id="pk" class="sec">
-  <div class="card pk">
-    <span class="tag ht">🎒 必帶物品備忘錄</span>
-    <ul class="memo">
-      <li class="imp">🧥 防風外套（大人、小孩各一件，海邊防風保暖）</li>
-      <li class="imp">🫧 洗澡球（沐浴球，晚上洗澡必備）</li>
-      <li class="imp">🧦 襪子（大人、小孩皆需穿襪才能進飯店遊戲室）</li>
-      <li>👕 兩天一夜換洗衣物、睡衣、好走的休閒運動鞋</li>
-      <li>🕶️ 太陽眼鏡、遮陽帽、防曬乳、個人藥品與乾濕紙巾</li>
-      <li>💳 身分證、健保卡、現金百元鈔（永大夜市＆餵魚飼料）</li>
-      <li>🔋 手機充電器、行動電源、車用充電線、隨身保溫水壺</li>
-    </ul>
-  </div>
-</div>
-</div>
-<div id="toast" class="toast">已複製！</div>
-<script>
-function go(id,b){document.querySelectorAll('.sec').forEach(e=>e.classList.remove('on'));document.querySelectorAll('.tab').forEach(e=>e.classList.remove('on'));document.getElementById(id).classList.add('on');b.classList.add('on')}
-function cp(t){navigator.clipboard.writeText(t).then(()=>{const s=document.getElementById('toast');s.textContent='✨ 已複製：'+t;s.classList.add('show');setTimeout(()=>s.classList.remove('show'),1800)})}
-/* 備用日本時鐘：setInterval(()=>{const e=document.getElementById('jp');if(e)e.textContent=new Date().toLocaleTimeString('zh-TW',{timeZone:'Asia/Tokyo',hour12:false})},1000); */
-</script>
+        <!-- 頁籤一：行程規劃 -->
+        <div x-show="activeTab === 'trip'" class="space-y-6">
+            
+            <!-- 住宿提醒與導航 -->
+            <div class="bg-indigo-50 border border-indigo-100 rounded-2xl p-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+                <div class="flex items-start gap-3">
+                    <span class="text-2xl">🏨</span>
+                    <div>
+                        <h3 class="font-bold text-indigo-900 text-sm">已預訂住宿：晶盈親旅大酒店</h3>
+                        <p class="text-xs text-indigo-700 mt-0.5">台南市永康區新中街206號 ｜ 含2客早餐與1位12歲以下免費入住</p>
+                    </div>
+                </div>
+                <a href="https://www.google.com/maps/search/?api=1&query=台南市永康區新中街206號" target="_blank" class="bg-indigo-600 text-white text-xs px-3 py-2 rounded-xl font-medium hover:bg-indigo-700 transition-colors whitespace-nowrap">
+                    📍 開啟 Google 導航
+                </a>
+            </div>
+
+            <!-- 第一天 -->
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
+                <div class="bg-indigo-600 text-white px-5 py-3 font-bold text-base flex justify-between items-center">
+                    <span>📅 第一天：11/14 (五)</span>
+                    <span class="text-xs bg-indigo-500 px-2.5 py-1 rounded-full">室內科教・飯店放電</span>
+                </div>
+                <div class="divide-y divide-slate-100 text-sm">
+                    <div class="p-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+                        <div class="flex gap-4 items-start">
+                            <span class="font-bold text-indigo-600 whitespace-nowrap">上午</span>
+                            <div>
+                                <h4 class="font-bold text-slate-900">樹谷生活科學館（全室內冷氣房）</h4>
+                                <p class="text-slate-600 text-xs mt-1">參觀恐龍化石與互動科學裝置，避開戶外高溫。</p>
+                            </div>
+                        </div>
+                        <a href="https://www.google.com/maps/search/?api=1&query=樹谷生活科學館" target="_blank" class="text-xs bg-slate-100 text-slate-700 px-3 py-1.5 rounded-lg hover:bg-slate-200 transition-colors whitespace-nowrap">
+                            🗺️ Google 導航
+                        </a>
+                    </div>
+                    <div class="p-4 flex gap-4 items-start bg-slate-50/50">
+                        <span class="font-bold text-indigo-600 whitespace-nowrap">中午</span>
+                        <div>
+                            <h4 class="font-bold text-slate-900">自由覓食 / 彈性午餐時間</h4>
+                            <p class="text-slate-600 text-xs mt-1">可切換至上方「素食餐館推薦」分頁，挑選鄰近蔬食一鍵導航。</p>
+                        </div>
+                    </div>
+                    <div class="p-4 flex gap-4 items-start">
+                        <span class="font-bold text-indigo-600 whitespace-nowrap">下午</span>
+                        <div>
+                            <h4 class="font-bold text-slate-900">入住晶盈親旅大酒店 & 200坪兒童遊戲室</h4>
+                            <p class="text-slate-600 text-xs mt-1">直奔 2 樓無尾熊奇遊樂園（大球池、賽車場、攀爬迷宮），盡情放電。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 第二天 -->
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
+                <div class="bg-emerald-600 text-white px-5 py-3 font-bold text-base flex justify-between items-center">
+                    <span>📅 第二天：11/15 (日)</span>
+                    <span class="text-xs bg-emerald-500 px-2.5 py-1 rounded-full">室內樂園・輕鬆賦歸</span>
+                </div>
+                <div class="divide-y divide-slate-100 text-sm">
+                    <div class="p-4 flex gap-4 items-start">
+                        <span class="font-bold text-emerald-600 whitespace-nowrap">上午 08:00</span>
+                        <div>
+                            <h4 class="font-bold text-slate-900">飯店桉樹餐廳自助早餐</h4>
+                        </div>
+                    </div>
+                    <div class="p-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 bg-slate-50/50">
+                        <div class="flex gap-4 items-start">
+                            <span class="font-bold text-emerald-600 whitespace-nowrap">上午場</span>
+                            <div>
+                                <h4 class="font-bold text-slate-900">童媽吉樂園 MAGI LAND（台南永康館）</h4>
+                                <p class="text-slate-600 text-xs mt-1">精緻乾淨的室內親子樂園，適合 6 歲小朋友盡情遊玩。</p>
+                            </div>
+                        </div>
+                        <a href="https://www.google.com/maps/search/?api=1&query=童媽吉樂園MAGI LAND台南永康館" target="_blank" class="text-xs bg-slate-100 text-slate-700 px-3 py-1.5 rounded-lg hover:bg-slate-200 transition-colors whitespace-nowrap">
+                            🗺️ Google 導航
+                        </a>
+                    </div>
+                    <div class="p-4 flex gap-4 items-start">
+                        <span class="font-bold text-emerald-600 whitespace-nowrap">中午</span>
+                        <div>
+                            <h4 class="font-bold text-slate-900">自由覓食 / 彈性午餐時間</h4>
+                            <p class="text-slate-600 text-xs mt-1">免跑市區，就近享受永康在地素食餐館。</p>
+                        </div>
+                    </div>
+                    <div class="p-4 flex gap-4 items-start bg-slate-50/50">
+                        <span class="font-bold text-emerald-600 whitespace-nowrap">下午</span>
+                        <div>
+                            <h4 class="font-bold text-slate-900">快樂賦歸</h4>
+                            <p class="text-slate-600 text-xs mt-1">帶著滿滿回憶輕鬆北返。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- 頁籤二：景點與備案 -->
+        <div x-show="activeTab === 'spots'" class="space-y-4" style="display: none;">
+            
+            <!-- 備案啟動原則說明卡片 -->
+            <div class="bg-amber-50 border border-amber-200 rounded-2xl p-4 space-y-2">
+                <h3 class="font-bold text-amber-900 text-sm flex items-center gap-1.5">
+                    ⚠️ 爸爸專用：備案啟動原則
+                </h3>
+                <ul class="text-xs text-amber-800 space-y-1 list-disc list-inside">
+                    <li><strong>氣溫過高 / 太曬原則</strong>：若戶外步行超過 5 分鐘小孩開始顯得煩躁，立即放棄戶外點，無條件切換至全室內冷氣備案（如奇美博物館常設展或室內樂園）。</li>
+                    <li><strong>塞車 / 交通延誤原則</strong>：若前往特定景點車陣過長，立即取消該行程，就近尋找永康區內的備用景點或餐廳，避免大人小孩在車上枯坐。</li>
+                    <li><strong>小孩電力耗盡原則</strong>：若下午行程前小孩已累垮，直接提早返回晶盈親旅大酒店，讓小孩在 200 坪遊戲室或房間充飽電。</li>
+                </ul>
+            </div>
+
+            <div class="bg-indigo-50 border border-indigo-100 rounded-2xl p-4">
+                <h3 class="font-bold text-indigo-900 text-sm">🎡 嚴選室內與親子友善景點（點擊直接啟動 Google 導航）</h3>
+            </div>
+
+            <!-- 景點 1 -->
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-5 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                <div class="space-y-1">
+                    <div class="flex items-center gap-2">
+                        <h4 class="font-bold text-slate-900 text-base">樹谷生活科學館</h4>
+                        <span class="text-xs bg-indigo-100 text-indigo-800 px-2 py-0.5 rounded-full font-medium">首選室內科教</span>
+                    </div>
+                    <p class="text-xs text-slate-600">位於新市區（近永康），全館皆為室內空調。有恐龍化石與互動科學裝置，非常適合 6 歲小孩動手探索。</p>
+                </div>
+                <a href="https://www.google.com/maps/search/?api=1&query=樹谷生活科學館" target="_blank" class="bg-indigo-600 text-white text-xs px-4 py-2 rounded-xl font-medium hover:bg-indigo-700 transition-colors whitespace-nowrap">
+                    📍 Google 導航
+                </a>
+            </div>
+
+            <!-- 景點 2 -->
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-5 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                <div class="space-y-1">
+                    <div class="flex items-center gap-2">
+                        <h4 class="font-bold text-slate-900 text-base">童媽吉樂園 MAGI LAND（台南永康館）</h4>
+                        <span class="text-xs bg-indigo-100 text-indigo-800 px-2 py-0.5 rounded-full font-medium">室內親子樂園</span>
+                    </div>
+                    <p class="text-xs text-slate-600">位於永康區，環境乾淨舒適、遊樂設施豐富，讓小朋友在涼爽室內盡情放電的最佳去處。</p>
+                </div>
+                <a href="https://www.google.com/maps/search/?api=1&query=童媽吉樂園MAGI LAND台南永康館" target="_blank" class="bg-indigo-600 text-white text-xs px-4 py-2 rounded-xl font-medium hover:bg-indigo-700 transition-colors whitespace-nowrap">
+                    📍 Google 導航
+                </a>
+            </div>
+
+            <!-- 景點 3 -->
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-5 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                <div class="space-y-1">
+                    <div class="flex items-center gap-2">
+                        <h4 class="font-bold text-slate-900 text-base">奇美博物館（常設展 / 動物廳與兵器廳）</h4>
+                        <span class="text-xs bg-slate-100 text-slate-700 px-2 py-0.5 rounded-full font-medium">彈性室內備案</span>
+                    </div>
+                    <p class="text-xs text-slate-600">若想避開戶外大太陽，可直奔館內冷氣房參觀動物廳與兵器廳，視覺震撼感強且老少咸宜。</p>
+                </div>
+                <a href="https://www.google.com/maps/search/?api=1&query=奇美博物館" target="_blank" class="bg-indigo-600 text-white text-xs px-4 py-2 rounded-xl font-medium hover:bg-indigo-700 transition-colors whitespace-nowrap">
+                    📍 Google 導航
+                </a>
+            </div>
+        </div>
+
+        <!-- 頁籤三：素食餐館推薦 -->
+        <div x-show="activeTab === 'food'" class="space-y-4" style="display: none;">
+            <div class="bg-emerald-50 border border-emerald-100 rounded-2xl p-4">
+                <h3 class="font-bold text-emerald-900 text-sm">🥗 永康周邊與精選蛋奶素友善餐館（點擊直接啟動 Google 導航）</h3>
+                <p class="text-xs text-emerald-700 mt-0.5">肚子餓時隨時點擊導航出發，免去市區塞車之苦。</p>
+            </div>
+
+            <!-- 餐館 1 -->
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-5 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                <div class="space-y-1">
+                    <div class="flex items-center gap-2">
+                        <h4 class="font-bold text-slate-900 text-base">蔬上食</h4>
+                        <span class="text-xs bg-amber-100 text-amber-800 px-2 py-0.5 rounded-full font-medium">創意異國蔬食</span>
+                    </div>
+                    <p class="text-xs text-slate-600">位於永康區東橋一路，提供極具特色且美味的異國風味蔬食料理，環境舒適且對蛋奶素非常友善。</p>
+                </div>
+                <a href="https://www.google.com/maps/search/?api=1&query=台南市永康區東橋一路 蔬上食" target="_blank" class="bg-emerald-600 text-white text-xs px-4 py-2 rounded-xl font-medium hover:bg-emerald-700 transition-colors whitespace-nowrap">
+                    📍 Google 導航
+                </a>
+            </div>
+
+            <!-- 餐館 2 -->
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-5 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                <div class="space-y-1">
+                    <div class="flex items-center gap-2">
+                        <h4 class="font-bold text-slate-900 text-base">䊆ㄐㄧㄡˋ是蔬食</h4>
+                        <span class="text-xs bg-amber-100 text-amber-800 px-2 py-0.5 rounded-full font-medium">★ 4.8 高評價</span>
+                    </div>
+                    <p class="text-xs text-slate-600">主打精緻美味的創意蔬食麵飯與料理，環境溫馨乾淨，質感極佳。</p>
+                </div>
+                <a href="https://www.google.com/maps/search/?api=1&query=䊆ㄐㄧㄡˋ是蔬食" target="_blank" class="bg-emerald-600 text-white text-xs px-4 py-2 rounded-xl font-medium hover:bg-emerald-700 transition-colors whitespace-nowrap">
+                    📍 Google 導航
+                </a>
+            </div>
+
+            <!-- 餐館 3 -->
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-5 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                <div class="space-y-1">
+                    <div class="flex items-center gap-2">
+                        <h4 class="font-bold text-slate-900 text-base">大樂蔬食坊</h4>
+                        <span class="text-xs bg-slate-100 text-slate-700 px-2 py-0.5 rounded-full font-medium">在地人氣</span>
+                    </div>
+                    <p class="text-xs text-slate-600">位於永康區中山南路附近，提供多樣化的麵食、飯類與精緻小點，口味樸實美味。</p>
+                </div>
+                <a href="https://www.google.com/maps/search/?api=1&query=大樂蔬食坊 永康" target="_blank" class="bg-emerald-600 text-white text-xs px-4 py-2 rounded-xl font-medium hover:bg-emerald-700 transition-colors whitespace-nowrap">
+                    📍 Google 導航
+                </a>
+            </div>
+
+            <!-- 餐館 4 -->
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-5 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                <div class="space-y-1">
+                    <div class="flex items-center gap-2">
+                        <h4 class="font-bold text-slate-900 text-base">永康素食自助餐</h4>
+                        <span class="text-xs bg-slate-100 text-slate-700 px-2 py-0.5 rounded-full font-medium">迅速便利</span>
+                    </div>
+                    <p class="text-xs text-slate-600">在地老字號素食自助餐，蛋奶素菜餚豐富，夾取方便，適合帶小孩快速解決一餐。</p>
+                </div>
+                <a href="https://www.google.com/maps/search/?api=1&query=永康素食自助餐" target="_blank" class="bg-emerald-600 text-white text-xs px-4 py-2 rounded-xl font-medium hover:bg-emerald-700 transition-colors whitespace-nowrap">
+                    📍 Google 導航
+                </a>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- 頁尾 -->
+    <footer class="text-center py-6 text-xs text-slate-400">
+        <p>2026 Tainan Family Trip Planner 🚗 Drive-Friendly Edition</p>
+    </footer>
+
 </body>
 </html>
